@@ -1,0 +1,57 @@
+import React from 'react';
+
+const LIST = [
+  {
+    id: '1',
+    title: 'The Road to React',
+  },
+  {
+    id: '2',
+    title: 'The Road to GraphQL',
+  },
+];
+
+const App = () => {
+  const [list, setList] = React.useState([]);
+
+  const handleFetch = () => {
+    setList(LIST);
+  };
+
+  if (!list.length) {
+    return (
+      <div>
+        <button type="button" onClick={handleFetch}>
+          Fetch
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <List list={list} />
+    </div>
+  );
+};
+
+const List = ({ list }) => {
+  return (
+    <ul>
+      {list.map((item) => (
+        <Item key={item.id} item={item} />
+      ))}
+    </ul>
+  );
+};
+
+const Item = ({ item }) => {
+  return (
+    <li key={item.id}>
+      <span>{item.title}</span>
+    </li>
+  );
+};
+
+export default App;
+

@@ -27,31 +27,52 @@ const App = () => {
       </div>
     );
   }
+  
 
   return (
     <div>
-      <List list={list} />
+      <List 
+        list={list}
+
+      />
+      
     </div>
   );
 };
 
-const List = ({ list }) => {
+const List = ({ list, selectedId, setSelectedId }) => {
   return (
     <ul>
       {list.map((item) => (
-        <Item key={item.id} item={item} />
+        <Item 
+          key={item.id} 
+          item={item}
+          selectedId={selectedId}
+          onSelectedId={selectedId}
+        />
       ))}
     </ul>
   );
 };
 
-const Item = ({ item }) => {
+const Item = ({ item, selectedId, onSelectedId }) => {
+  const handleSelect = () => {
+    onSelectedId(item.id);
+  };
+
+  const selectedStyle = {
+    fontWeight: selectedId === item.id ? 'bold' : 'normal',
+  };
+
   return (
-    <li key={item.id}>
+    <li key={item.id} style={selectedStyle}>
       <span>{item.title}</span>
+
+      <button type="button" onClick={handleSelect}>
+        Select
+      </button>
     </li>
   );
 };
 
 export default App;
-

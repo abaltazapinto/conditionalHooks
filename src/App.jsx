@@ -1,3 +1,8 @@
+import React, { useState } from 'react';
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+
 // Dados constantes
 const LIST = [
   {
@@ -29,6 +34,15 @@ function Inspiration() {
   }
 
   // Adicione uma visualização para a lista carregada se necessário
+  return (
+    <div>
+      <ul>
+        {list.map(item => (
+          <li key={item.id}>{item.title}</li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 function Welcome({ text }) {

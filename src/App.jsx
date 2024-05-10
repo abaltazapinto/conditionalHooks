@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Angular from './secondeconponent'; // Use o nome do arquivo correto e o caminho se estiver em diretório diferente
+
+import './App.css';
 
 // Dados constantes
 const LIST = [
@@ -15,7 +15,6 @@ const LIST = [
   },
 ];
 
-// Componentes
 function Inspiration() {
   const [list, setList] = useState([]);
 
@@ -27,13 +26,12 @@ function Inspiration() {
     return (
       <div>
         <button type="button" onClick={handleFetch}>
-          Fetch
+          Learn more about fetching :D
         </button>
       </div>
     );
   }
 
-  // Adicione uma visualização para a lista carregada se necessário
   return (
     <div>
       <ul>
@@ -45,29 +43,15 @@ function Inspiration() {
   );
 }
 
-function Welcome({ text }) {
-  return <h1>{text}</h1>;
-}
-
 // Componente principal
-function App() { 
-  const greeting = 'Welcome to React';
-  const [isShow, setShow] = useState(false);
-
-  const handleToggle = () => {
-    setShow(!isShow);
-  };
-
+function App() {
   return (
     <div>
-      <button onClick={handleToggle} type="button">
-        Toggle
-      </button>
-
-      {isShow ? <Welcome text={greeting} /> : null}
+      <Angular /> 
       <Inspiration />
     </div>
   );
 }
 
 export default App;
+

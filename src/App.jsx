@@ -1,5 +1,4 @@
-import React from 'react';
-
+// Dados constantes
 const LIST = [
   {
     id: '1',
@@ -11,8 +10,9 @@ const LIST = [
   },
 ];
 
-const App = () => {
-  const [list, setList] = React.useState([]);
+// Componentes
+function Inspiration() {
+  const [list, setList] = useState([]);
 
   const handleFetch = () => {
     setList(LIST);
@@ -27,52 +27,33 @@ const App = () => {
       </div>
     );
   }
-  
+
+  // Adicione uma visualização para a lista carregada se necessário
+}
+
+function Welcome({ text }) {
+  return <h1>{text}</h1>;
+}
+
+// Componente principal
+function App() { 
+  const greeting = 'Welcome to React';
+  const [isShow, setShow] = useState(false);
+
+  const handleToggle = () => {
+    setShow(!isShow);
+  };
 
   return (
     <div>
-      <List 
-        list={list}
+      <button onClick={handleToggle} type="button">
+        Toggle
+      </button>
 
-      />
-      
+      {isShow ? <Welcome text={greeting} /> : null}
+      <Inspiration />
     </div>
   );
-};
-
-const List = ({ list, selectedId, setSelectedId }) => {
-  return (
-    <ul>
-      {list.map((item) => (
-        <Item 
-          key={item.id} 
-          item={item}
-          selectedId={selectedId}
-          onSelectedId={selectedId}
-        />
-      ))}
-    </ul>
-  );
-};
-
-const Item = ({ item, selectedId, onSelectedId }) => {
-  const handleSelect = () => {
-    onSelectedId(item.id);
-  };
-
-  const selectedStyle = {
-    fontWeight: selectedId === item.id ? 'bold' : 'normal',
-  };
-
-  return (
-    <li key={item.id} style={selectedStyle}>
-      <span>{item.title}</span>
-
-      <button type="button" onClick={handleSelect}>
-        Select
-      </button>
-    </li>
-  );
-};
+}
 
 export default App;
